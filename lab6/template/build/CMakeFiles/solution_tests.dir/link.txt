@@ -1,0 +1,1 @@
+/usr/bin/c++ -no-pie -Wall -Wextra -Wno-sign-compare -Wno-attributes -fno-omit-frame-pointer -pthread -Wl,--dependency-file=CMakeFiles/solution_tests.dir/link.d CMakeFiles/solution_tests.dir/solution.asm.o CMakeFiles/solution_tests.dir/tests.cpp.o "CMakeFiles/solution_tests.dir/gtest/gtest-all.cc.o" CMakeFiles/solution_tests.dir/gtest/gtest_main.cc.o -o solution_tests

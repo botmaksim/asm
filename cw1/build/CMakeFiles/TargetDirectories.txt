@@ -1,0 +1,5 @@
+/home/maksim/Programming/Labs/2nd_sem/asm/template/build/CMakeFiles/gtest_files.dir
+/home/maksim/Programming/Labs/2nd_sem/asm/template/build/CMakeFiles/asm_utils.dir
+/home/maksim/Programming/Labs/2nd_sem/asm/template/build/CMakeFiles/kr_2022_v1.dir
+/home/maksim/Programming/Labs/2nd_sem/asm/template/build/CMakeFiles/edit_cache.dir
+/home/maksim/Programming/Labs/2nd_sem/asm/template/build/CMakeFiles/rebuild_cache.dir

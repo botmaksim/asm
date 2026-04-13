@@ -1,0 +1,3 @@
+/home/maksim/Programming/Labs/2nd_sem/asm/lab3/template/build/CMakeFiles/solution_tests.dir
+/home/maksim/Programming/Labs/2nd_sem/asm/lab3/template/build/CMakeFiles/edit_cache.dir
+/home/maksim/Programming/Labs/2nd_sem/asm/lab3/template/build/CMakeFiles/rebuild_cache.dir

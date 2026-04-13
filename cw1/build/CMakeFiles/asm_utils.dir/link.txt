@@ -1,0 +1,2 @@
+/usr/bin/ar qc libasm_utils.a CMakeFiles/asm_utils.dir/utils/utils.cc.o CMakeFiles/asm_utils.dir/utils/asm_utils.asm.o
+/usr/bin/ranlib libasm_utils.a
