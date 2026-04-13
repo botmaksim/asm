@@ -1,8 +1,8 @@
 CMakeFiles/solution_tests.dir/tests.cpp.o: \
  /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/tests.cpp \
  /usr/include/stdc-predef.h \
- /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/gtest/gtest.h \
- /usr/include/c++/14/cstddef \
+ /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/solution.h \
+ /usr/include/c++/14/cstdint \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -13,6 +13,17 @@ CMakeFiles/solution_tests.dir/tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+ /usr/include/x86_64-linux-gnu/bits/time64.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/gtest/gtest.h \
+ /usr/include/c++/14/cstddef \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
  /usr/include/c++/14/bits/version.h /usr/include/c++/14/limits \
  /usr/include/c++/14/memory /usr/include/c++/14/bits/memoryfwd.h \
@@ -42,15 +53,6 @@ CMakeFiles/solution_tests.dir/tests.cpp.o: \
  /usr/include/c++/14/bits/alloc_traits.h \
  /usr/include/c++/14/bits/stl_raw_storage_iter.h \
  /usr/include/c++/14/bits/align.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
- /usr/include/x86_64-linux-gnu/bits/types.h \
- /usr/include/x86_64-linux-gnu/bits/typesizes.h \
- /usr/include/x86_64-linux-gnu/bits/time64.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/include/c++/14/bits/uses_allocator.h \
  /usr/include/c++/14/bits/unique_ptr.h /usr/include/c++/14/tuple \
  /usr/include/c++/14/bits/invoke.h \
@@ -178,8 +180,7 @@ CMakeFiles/solution_tests.dir/tests.cpp.o: \
  /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/gtest/internal/gtest-internal.h \
  /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/gtest/internal/gtest-port.h \
  /usr/include/c++/14/stdlib.h /usr/include/string.h \
- /usr/include/strings.h /usr/include/c++/14/cstdint \
- /usr/include/x86_64-linux-gnu/sys/stat.h \
+ /usr/include/strings.h /usr/include/x86_64-linux-gnu/sys/stat.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h \
  /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
  /usr/include/x86_64-linux-gnu/bits/statx.h /usr/include/linux/stat.h \
@@ -257,5 +258,4 @@ CMakeFiles/solution_tests.dir/tests.cpp.o: \
  /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/gtest/gtest-typed-test.h \
  /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/gtest/gtest_pred_impl.h \
  /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/gtest/gtest.h \
- /home/maksim/Programming/Labs/2nd_sem/asm/lab5/template/solution.h \
  /usr/include/c++/14/cstdarg

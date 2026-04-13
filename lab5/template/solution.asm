@@ -15,78 +15,103 @@
         push r13
         push r14
         push r15
+        push rbx
         
         mov edi, edi
         mov esi, esi
-        mov edx, edx
-        
-        ; Point 1: (rcx, r8)
+        movsxd rdx, edx
         mov ecx, ecx
         mov r8d, r8d
         
-        mov r10, rdi
-        sub r10, rcx
-        imul r10, r10
-        mov r11, rsi
-        sub r11, r8
-        imul r11, r11
-        add r10, r11
+        ; Point 1: (rcx, r8)
+        mov rax, rdi
+        sub rax, rcx
+        imul rax, rax
+        mov r10, rax
+        
+        mov rax, rsi
+        sub rax, r8
+        imul rax, rax
+        
+        add r10, rax
+        setc r11b
+        movzx r11, r11b
         
         mov r12, r10
-        mov r13, 0
+        mov r13, r11
+        mov rbx, 0
         
         cmp rdx, 1
         jle .done1
         
-        ; Point 2: (r9, [rsp+40])
+        ; Point 2: (r9, [rsp+48])
         mov r9d, r9d
-        mov r14d, dword [rsp+40]
+        mov r14d, dword [rsp+48]
         
-        mov r10, rdi
-        sub r10, r9
-        imul r10, r10
-        mov r11, rsi
-        sub r11, r14
-        imul r11, r11
-        add r10, r11
+        mov rax, rdi
+        sub rax, r9
+        imul rax, rax
+        mov r10, rax
         
+        mov rax, rsi
+        sub rax, r14
+        imul rax, rax
+        
+        add r10, rax
+        setc r11b
+        movzx r11, r11b
+        
+        cmp r11, r13
+        ja .next2
+        jb .update2
         cmp r10, r12
-        jge .next2
+        jae .next2
+    .update2:
         mov r12, r10
-        mov r13, 1
+        mov r13, r11
+        mov rbx, 1
     .next2:
         cmp rdx, 2
         jle .done1
         
         mov r15, 2
-        mov r14, 48
+        mov r14, 56
     .loop1:
         cmp r15, rdx
         jge .done1
         
-        mov r10, rdi
+        mov rax, rdi
         mov ecx, dword [rsp+r14]
-        sub r10, rcx
-        imul r10, r10
+        sub rax, rcx
+        imul rax, rax
+        mov r10, rax
         
-        mov r11, rsi
+        mov rax, rsi
         mov ecx, dword [rsp+r14+8]
-        sub r11, rcx
-        imul r11, r11
+        sub rax, rcx
+        imul rax, rax
         
-        add r10, r11
+        add r10, rax
+        setc r11b
+        movzx r11, r11b
         
+        cmp r11, r13
+        ja .next_i1
+        jb .update_i1
         cmp r10, r12
-        jge .next_i1
+        jae .next_i1
+    .update_i1:
         mov r12, r10
-        mov r13, r15
+        mov r13, r11
+        mov rbx, r15
     .next_i1:
         inc r15
         add r14, 16
         jmp .loop1
         
     .done1:
-        mov rax, r13
+        mov rax, rbx
+        pop rbx
         pop r15
         pop r14
         pop r13
@@ -94,6 +119,8 @@
         ret
 
     AsmSummarizeRows:
+        movsxd rsi, esi
+        movsxd rdx, edx
         mov r8, 0
     .loop_i2:
         cmp r8, rsi
@@ -122,6 +149,7 @@
         push rbx
         
         mov r12, rdi
+        movsxd rsi, esi
         mov r13, rsi
         mov r14, rdx
         xor r15, r15
@@ -157,7 +185,7 @@
         push r13
         push r14
         push r15
-        push rbx ; 5 pushes = 40 bytes. + 8 (ret addr) = 48 bytes. Aligned to 16 bytes.
+        push rbx
         
         mov rdi, 1
         call GetMagic
@@ -198,9 +226,10 @@
         push r13
         push r14
         push r15
-        push rbx ; 5 pushes = 40 bytes. + 8 (ret addr) = 48 bytes. Aligned to 16 bytes.
+        push rbx
         
         mov r12, rdi
+        mov esi, esi
         mov r13, rsi
         
         mov rdi, rsi
@@ -225,33 +254,45 @@
         ret
 
     AsmSequencesCount:
-        ; rdi = n, rsi = k
-        mov rax, 0
-        test rsi, rsi
-        jl .done6
+        ; rdi = N, rsi = K
+        ; we want C(N - K + 1, K)
+        mov rax, rdi
+        sub rax, rsi
+        inc rax ; rax = n = N - K + 1
         
-        mov rcx, rdi
+        cmp rax, rsi
+        jl .zero6
+        
+        ; C(n, k) where n = rax, k = rsi
+        mov rcx, rax
         sub rcx, rsi
-        inc rcx      ; rcx = N = n - k + 1
-        
-        cmp rcx, rsi
-        jl .done6     ; if N < K, return 0
-        
-        mov rax, 1
-        mov r8, 1    ; i = 1
+        cmp rsi, rcx
+        jle .k_ok6
+        mov rsi, rcx
+    .k_ok6:
+        mov r8, 1 ; result
+        mov r9, 1 ; i
     .loop6:
-        cmp r8, rsi
+        cmp r9, rsi
         jg .done6
         
-        mov r9, rcx
-        sub r9, r8
-        inc r9       ; r9 = N - i + 1
+        mov r10, rax
+        sub r10, r9
+        inc r10 ; r10 = n - i + 1
         
-        mul r9       ; rdx:rax = rax * r9
-        div r8       ; rax = rax / i
+        push rax
+        mov rax, r8
+        mul r10 ; rdx:rax = r8 * r10
+        div r9  ; rax = rdx:rax / r9
+        mov r8, rax
+        pop rax
         
-        inc r8
+        inc r9
         jmp .loop6
-        
-    .done6:
+    .zero6:
+        mov rax, 0
         ret
+    .done6:
+        mov rax, r8
+        ret
+

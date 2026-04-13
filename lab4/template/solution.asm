@@ -41,7 +41,7 @@
         ret
 
     AsmSpecialXor:
-        movsxd rsi, esi
+        mov esi, esi
         xor rax, rax
         test rsi, rsi
         jle .done2
@@ -236,8 +236,8 @@
         mov dword [rdi + rcx*4], 0
         jmp .next7
     .check_even7:
-        mov eax, dword [rdi + rcx*4]
-        test eax, 1
+        movsxd rax, dword [rdi + rcx*4]
+        test rax, 1
         jnz .odd7
         mov dword [rdi + rcx*4], 1
         jmp .next7
@@ -429,6 +429,8 @@
         push r12
         movsxd rcx, dword [rsi]
         movsxd r12, edx
+        cmp r12, 0
+        jle .done13
         mov r8, 0
         mov r9, 0
     .calc_loop13:
@@ -572,6 +574,8 @@
     AsmFindSorted:
         push r12
         push r13
+        movsxd rsi, esi
+        movsxd rdx, edx
         mov r12, rdx
         mov rcx, 0
         xor r8, r8
@@ -587,7 +591,7 @@
         movsxd rax, dword [r9 + r11*4 - 4]
         movsxd r13, dword [r9 + r11*4]
         cmp rax, r13
-        jle .next_j16
+        jl .next_j16
         mov r10, 0
         jmp .check_sorted16
     .next_j16:
