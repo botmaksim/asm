@@ -4,7 +4,6 @@
 [![Architecture](https://img.shields.io/badge/Architecture-x86--64-6E4C13.svg)](#)
 [![CMake](https://img.shields.io/badge/CMake-3.14%2B-blue.svg)](https://cmake.org/)
 [![GoogleTest](https://img.shields.io/badge/GoogleTest-Unit%20Tests-brightgreen.svg)](https://github.com/google/googletest)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 An educational systems repository containing progressive x86-64 assembly implementations and automated unit verification suites for the Low-Level Systems Programming curriculum at Belarusian State University, Faculty of Applied Mathematics and Computer Science. Maintained as a public reference for subsequent academic cohorts.
 
@@ -103,9 +102,3 @@ asm/
 │   └── tests.cpp       # GoogleTest and GoogleMock test suite
 └── cw1_test/           # Verification benchmarks
 ```
-
----
-
-## License
-
-This repository is distributed under the [MIT License](LICENSE).
